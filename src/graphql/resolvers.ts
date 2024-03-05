@@ -209,9 +209,13 @@ export const resolvers = {
 
       if (!checkIs) return null;
 
-      const isCorrect = BcryptService.verifyPassword(password, checkIs.password);
+      const isCorrect = await BcryptService.verifyPassword(password, checkIs.password);
 
-      if (!isCorrect) return null;
+      if (!isCorrect) return {
+        token: "you are not authorized to access this resource",
+        username: "you are not authorized to access this resource",
+        email: "you are not authorized to access this resource"
+      }
 
       const token = JWTService.sign(checkIs.username, '1h');
 

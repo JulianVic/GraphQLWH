@@ -43,11 +43,11 @@ export const typeDefs = gql`
     createUser(username : String, email : String, password : String): UserResponse!
     authenticateUser(username : String, password : String): UserResponse!
     createPost(title : String, content : String, userId : String, token : String!): PostResponse
-    createWebHook(url : String, event: String, userId : String, token: String!) : WebHook
+    createWebHook(url : String, event: String, userId : String, token: String!) : WebHook 
+    updateWebHook(token : String!, idWebHook: String!, url : String, event : String): WebHookResponse
     updateUser(token : String!, username : String, email : String, idUser: String!): User
     deleteUser(token : String!, idUser: String!) : User
     updatePost(token : String!, idPost : String!, title: String, content : String): PostResponse
-    updateWebHook(token : String!, idWebHook: String!, url : String, event : String): WebHookResponse
 
   }
 
@@ -73,9 +73,5 @@ export const typeDefs = gql`
     url : String
     event : String
     userId : String
-
   }
-
 `
-
-
